@@ -10,9 +10,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                script {
-					docker.build("pestotoast/nextcloud")
-				}
+				docker.build("pestotoast/nextcloud")
             }
         }
         stage('Test') {
