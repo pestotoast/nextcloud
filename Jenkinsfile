@@ -3,7 +3,9 @@ pipeline {
 
     stages {
         stage('Clone'){
-          checkout scm
+          	steps {
+				checkout scm
+			}
         }
         
         stage('Build') {
