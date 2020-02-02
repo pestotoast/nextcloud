@@ -2,6 +2,10 @@ pipeline {
     agent any
 
     stages {
+        stage('Clone'){
+          checkout scm
+        }
+        
         stage('Build') {
             steps {
                 app = docker.build("pestotoast/nextcloud")
