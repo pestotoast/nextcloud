@@ -1,6 +1,4 @@
 node {
-    checkout scm
-
-    def customImage = docker.build("my-image:latest")
-
+    def image = docker.build("pestotoast/nextcloud:latest")
+	image.push()	
 }
