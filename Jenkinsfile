@@ -1,27 +1,6 @@
-pipeline {
-    agent any
+node {
+    checkout scm
 
-    stages {
-        stage('Clone'){
-          	steps {
-				checkout scm
-			}
-        }
-        
-        stage('Build') {
-            steps {
-				docker.build 'pestotoast/nextcloud'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+    def customImage = docker.build("my-image:latest")
+
 }
