@@ -4,6 +4,7 @@ services:
   - docker
 
 script:
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   - docker build -t pestotoast/nextcloud .
   - echo "$DOCKER_PASSWORD" | docker login -u pestotoast --password-stdin
   - docker push pestotoast/nextcloud:latest
