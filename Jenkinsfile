@@ -9,13 +9,15 @@ node {
         checkout scm
         sh "git clone https://github.com/nextcloud/docker/"
         docker.build("nextcloud:fpm-alpine", "docker/18.0/fpm-alpine")
-        def image = docker.build("pestotoast/nextcloud:amd64")
+        def image = docker.build("pestotoast/nextcloud:amd64", "--no-cache --pull")
         image.push()	
     }
-    finally {
-        deleteDir()
-        mail to: 'jenkins@pestotoast.de',
+	catch {
+			mail to: 'jenkins@pestotoast.de',
                 subject: "Build ${currentBuild.result} ${currentBuild.fullDisplayName}",
                 body: "Build ${currentBuild.result} at ${env.BUILD_URL} after ${currentBuild.durationString} \r\nBuild variables: ${currentBuild.buildVariables} \r\n Changeset: ${currentBuild.changeSets}"
+	}
+    finally {
+        deleteDir()
     }  
 }
