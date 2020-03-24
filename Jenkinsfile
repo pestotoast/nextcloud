@@ -12,10 +12,10 @@ node {
         def image = docker.build("pestotoast/nextcloud:amd64", "--no-cache --pull")
         image.push()	
     }
-	catch {
-			mail to: 'jenkins@pestotoast.de',
-                subject: "Build ${currentBuild.result} ${currentBuild.fullDisplayName}",
-                body: "Build ${currentBuild.result} at ${env.BUILD_URL} after ${currentBuild.durationString} \r\nBuild variables: ${currentBuild.buildVariables} \r\n Changeset: ${currentBuild.changeSets}"
+	catch (ex) {
+		mail to: 'jenkins@pestotoast.de',
+			subject: "Build ${currentBuild.result} ${currentBuild.fullDisplayName}",
+            body: "Build ${currentBuild.result} at ${env.BUILD_URL} after ${currentBuild.durationString} \r\nBuild variables: ${currentBuild.buildVariables} \r\n Changeset: ${currentBuild.changeSets}"
 	}
     finally {
         deleteDir()
