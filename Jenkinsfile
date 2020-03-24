@@ -9,7 +9,7 @@ node {
         checkout scm
         sh "git clone https://github.com/nextcloud/docker/"
         docker.build("nextcloud:fpm-alpine", "docker/18.0/fpm-alpine")
-        def image = docker.build("pestotoast/nextcloud:amd64", "--no-cache --pull")
+        def image = docker.build("pestotoast/nextcloud:amd64", "--no-cache --pull .")
         image.push()	
     }
 	catch (ex) {
