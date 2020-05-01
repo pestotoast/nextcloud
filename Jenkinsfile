@@ -8,7 +8,7 @@ node {
         sh 'printenv'
         checkout scm
         sh "git clone https://github.com/nextcloud/docker/"
-        docker.build("nextcloud:fpm-alpine", "docker/18.0/fpm-alpine", " --no-cache --pull")
+        docker.build("nextcloud:fpm-alpine", "--no-cache --pull docker/18.0/fpm-alpine/")
         def image = docker.build("pestotoast/nextcloud:amd64", "--no-cache .")
         image.push()	
     }
