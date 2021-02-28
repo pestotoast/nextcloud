@@ -13,10 +13,10 @@ node {
         image.push()	
     }
 	catch (ex) {
-		mail to: 'jenkins@pestotoast.de',
-			subject: "Build ${currentBuild.result} ${currentBuild.fullDisplayName}",
-            body: "Build ${currentBuild.result} at ${env.BUILD_URL} after ${currentBuild.durationString} \r\nBuild variables: ${currentBuild.buildVariables} \r\n Changeset: ${currentBuild.changeSets}"
-		error "Build failed."
+        mail to: 'jenkins@pestotoast.de',
+                subject: "Build ${manager.build.result} ${currentBuild.fullDisplayName}",
+                body: "Build ${manager.build.result} at ${env.BUILD_URL} after ${currentBuild.durationString}
+	    error "Build failed"
 	}
     finally {
         deleteDir()
