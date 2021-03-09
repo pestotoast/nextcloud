@@ -14,8 +14,8 @@ node {
     }
 	catch (ex) {
         mail to: 'jenkins@pestotoast.de',
-                subject: "Build ${manager.build.result} ${currentBuild.fullDisplayName}",
-                body: "Build ${manager.build.result} at ${env.BUILD_URL} after ${currentBuild.durationString}"
+                subject: "Build error ${currentBuild.fullDisplayName}",
+                body: "Build error at ${env.BUILD_URL} after ${currentBuild.durationString}"
 	    error "Build failed"
 	}
     finally {
