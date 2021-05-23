@@ -1,4 +1,4 @@
-FROM nextcloud:fpm-alpine
+FROM pestotoast/nextcloud-temp
 RUN apk upgrade
 RUN apk add tesseract-ocr tesseract-ocr-data-deu imagemagick ffmpeg
 #RUN apk add --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ -allow-untrusted gnu-libiconv php7-iconv
